@@ -16,7 +16,7 @@ const modals = () => {
           item.style.display = 'none';
         });
 
-        showModal(modal);
+        showModal(modalSelector);
 
       });
     });
@@ -47,25 +47,26 @@ const modals = () => {
   
   }
 
-  function showModal(bodyToHide) {
-    bodyToHide.style.display = 'block';
+  function showModal(modalSelector) {
+    const modalToShow = document.querySelector(modalSelector);
+    modalToShow.style.display = 'block';
     document.body.style.overflow = 'hidden';
     document.body.style = `${scroll}px`;
   }
 
   function showModalByTime(selector, time) {
-    const modal = document.querySelector(selector);
+
     setTimeout(() => {
       let display;
 
       document.querySelectorAll('[data-modal]').forEach((item)=>{
-        if(getComputedStyle(item.display !== 'none')){
+        if(getComputedStyle(item).display !== 'none'){
           display ='block';
         }
       });
 
       if(!display){
-        showModal(modal);
+        showModal(selector);
 
       }
 
