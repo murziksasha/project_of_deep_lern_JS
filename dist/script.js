@@ -4475,9 +4475,10 @@ var accordion = function accordion(triggersSelector, itemsSelector) {
 
       if (target.classList.contains('active-style')) {
         target.nextElementSibling.style.maxHeight = target.nextElementSibling.scrollHeight + 80 + 'px';
-      } else {
-        target.nextElementSibling.style.maxHeight = '0px';
-      }
+      } // else {
+      //   target.nextElementSibling.style.maxHeight = '0px';
+      // } 
+
     });
   }); // blocks = document.querySelectorAll(itemsSelector);
   //accordion with css style version implement
