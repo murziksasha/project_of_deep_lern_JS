@@ -2,16 +2,33 @@ const accordion = (triggersSelector, itemsSelector) => {
   const btns = document.querySelectorAll(triggersSelector);
 
   btns.forEach(btn => {
+    btn.classList.remove('active-style');
+  });
+
+  btns.forEach(btn => {
     btn.addEventListener('click', e => {
       const target = e.currentTarget;
-      target.classList.toggle('active-style');
-      target.nextElementSibling.classList.toggle('active-content');
+
+      btns.forEach(btn => {
+        btn.classList.remove('active-style');
+        btn.nextElementSibling.style.maxHeight = '0px';
+        btn.nextElementSibling.classList.remove('active-content');
+      });
+
+      // target.classList.toggle('active-style');
+      // target.nextElementSibling.classList.toggle('active-content');
+
+      target.classList.add('active-style');
+      target.nextElementSibling.classList.add('active-content');
 
       if(target.classList.contains('active-style')) {
         target.nextElementSibling.style.maxHeight = target.nextElementSibling.scrollHeight + 80 + 'px';
-      } else {
-        target.nextElementSibling.style.maxHeight = '0px';
-      }
+      } 
+      // else {
+      //   target.nextElementSibling.style.maxHeight = '0px';
+      // } 
+
+      
     });
   });
 

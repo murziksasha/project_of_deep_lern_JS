@@ -4458,16 +4458,27 @@ __webpack_require__.r(__webpack_exports__);
 var accordion = function accordion(triggersSelector, itemsSelector) {
   var btns = document.querySelectorAll(triggersSelector);
   btns.forEach(function (btn) {
+    btn.classList.remove('active-style');
+  });
+  btns.forEach(function (btn) {
     btn.addEventListener('click', function (e) {
       var target = e.currentTarget;
-      target.classList.toggle('active-style');
-      target.nextElementSibling.classList.toggle('active-content');
+      btns.forEach(function (btn) {
+        btn.classList.remove('active-style');
+        btn.nextElementSibling.style.maxHeight = '0px';
+        btn.nextElementSibling.classList.remove('active-content');
+      }); // target.classList.toggle('active-style');
+      // target.nextElementSibling.classList.toggle('active-content');
+
+      target.classList.add('active-style');
+      target.nextElementSibling.classList.add('active-content');
 
       if (target.classList.contains('active-style')) {
         target.nextElementSibling.style.maxHeight = target.nextElementSibling.scrollHeight + 80 + 'px';
-      } else {
-        target.nextElementSibling.style.maxHeight = '0px';
-      }
+      } // else {
+      //   target.nextElementSibling.style.maxHeight = '0px';
+      // } 
+
     });
   }); // blocks = document.querySelectorAll(itemsSelector);
   //accordion with css style version implement
